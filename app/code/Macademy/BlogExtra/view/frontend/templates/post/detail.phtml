@@ -1,0 +1,19 @@
+<?php
+/** @var Magento\Framework\View\Element\Template $block */
+/** @var Macademy\Blog\ViewModel\Post $postVm */
+/** @var Magento\Framework\Escaper $escaper */
+$postVm = $block->getData('post_vm');
+$post = $postVm->getDetail();
+?>
+
+<div class="blog-post-detail">
+    <!--WRAP TEXT IN ECHO AND WRAP THAT IN __ FUNCTION, PASSED IN AS STRING, MAKES TEXT TRANSLATABLE INTL-->
+    <h1>
+        <?= $escaper->escapeHtml($post->getData('title')) ?>
+    </h1>
+    <p>
+    </p>
+    <p>
+        <?= $escaper->escapeHtml($post->getContent(), ['em', 'p', 'strong']) ?>
+    </p>
+</div>

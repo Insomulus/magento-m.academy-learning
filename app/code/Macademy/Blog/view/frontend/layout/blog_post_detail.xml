@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      layout="2columns-right"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="main">
+            <block name="blog.post.detail" template="Macademy_Blog::post/detail.phtml">
+                <arguments>
+                    <argument name="post_vm" xsi:type="object">
+                        Macademy\Blog\ViewModel\Post
+                    </argument>
+                </arguments>
+            </block>
+<!--            THIS BIT BELOW CREATES A DUPLICATE OF THE SIDEBAR AND ADDS CUSTOM CSS TO IT-->
+<!--            <container htmlTag="h1" htmlId="blog-header">-->
+<!--                <block name="blog.post.sidebar.extra" template="Macademy_Blog::post/sidebar.phtml"/>-->
+<!--            </container>-->
+
+        </referenceContainer>
+        <referenceContainer name="sidebar.main">
+            <block name="blog.post.sidebar" template="Macademy_Blog::post/sidebar.phtml">
+                <arguments>
+                    <argument name="post_vm" xsi:type="object">
+                        Macademy\Blog\ViewModel\Post
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <!--BEFORE TAG CAN USE ="-" TO PUT BEFORE ALL OTHER ELEMENTS AND AFTER TO PUT AFTER-->
+<!--        <move element="wishlist_sidebar" destination="sidebar.additional" before="catalog.compare.sidebar"/>-->
+<!--   STOPS THE BLOCK FROM BEING RENDERED BUT IT STILL EXISTS
+       <referenceBlock name="catalog.compare.sidebar" display="false"/>-->
+
+        <!--   STOPS THE BLOCK FROM EXISTING -->
+        <referenceBlock name="catalog.compare.sidebar" display="false"/>
+        <!--BELOW CODE OVERRIDES SIDEBAR WITH MY CUSTOM ONE THAT HAS AN ADDITIONAL BUTTON BY LINKING TO OUR TEMPLATE-->
+<!--        <referenceBlock name="wishlist_sidebar" template="Macademy_Blog::wishlist/sidebar.phtml"/>-->
+        <referenceBlock name="wishlist_sidebar" display="false"/>
+    </body>
+</page>
